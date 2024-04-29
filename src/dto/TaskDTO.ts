@@ -46,4 +46,8 @@ export default class TaskDTO {
     setCompleted(completed: boolean) {
         this.completed = completed;
     }
+
+    getDueDate(): string {
+        return this.due_date;
+    }
 }
