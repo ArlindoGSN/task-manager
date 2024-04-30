@@ -1,6 +1,6 @@
 import cors from 'cors';
 import express, { Request, Response } from 'express';
-import router from './routes/TaskRoutes';
+import router from './controllers/TaskRoutes';
 
 const app = express();
 const PORT = 3000;
