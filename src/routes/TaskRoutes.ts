@@ -27,29 +27,27 @@ router.get('/:id', async (req: Request, res: Response) => {
 
     res.send(task).json();
 });
+
 router.get('/:id/complete', async (req: Request, res: Response) => {
     const { id } = req.params;
 
     const task = await TaskService.getById(Number(id));
 
-    task.setCompleted(true);
+    task.completed = true;
 
-    await TaskService.update(
-        new Task(task.getId(), task.getTitle(), task.getDescription(), task.getCompleted(), task.getDueDate())
-    );
+    await TaskService.update(new Task(task.id, task.title, task.description, task.completed, task.due_date));
 
     res.send(task).json();
 });
+
 router.get('/:id/complete', async (req: Request, res: Response) => {
     const { id } = req.params;
 
     const task = await TaskService.getById(Number(id));
 
-    task.setCompleted(false);
+    task.completed = false;
 
-    await TaskService.update(
-        new Task(task.getId(), task.getTitle(), task.getDescription(), task.getCompleted(), task.getDueDate())
-    );
+    await TaskService.update(new Task(task.id, task.title, task.description, task.completed, task.due_date));
 
     res.send(task).json();
 });

@@ -14,9 +14,9 @@ describe('TaskService test', () => {
     });
 
     it('should get a task by id', async () => {
-        const task = await TaskService.getById(8);
+        const task = await TaskService.getById(1);
 
-        expect(task.getId()).toBe(8);
+        expect(task.id).toBe(1);
     });
 
     it('should list tasks', async () => {
@@ -27,5 +27,6 @@ describe('TaskService test', () => {
 
     it('should delete a task by id', async () => {
         await TaskService.deleteById(3);
+        expect(TaskService.getById(3)).rejects.toThrow();
     });
 });

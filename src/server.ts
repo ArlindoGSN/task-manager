@@ -8,7 +8,9 @@ const PORT = 3000;
 app.use(cors());
 
 app.use(express.json());
+
 app.use('/', router);
+
 app.use((err: any, _req: Request, res: Response, _next: any) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
