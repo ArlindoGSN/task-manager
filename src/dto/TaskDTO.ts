@@ -1,10 +1,11 @@
+import dayjs from 'dayjs';
 import Task from '../models/Task';
 export default class TaskDTO {
     id: number;
     title: string;
     description: string;
     completed: boolean;
-    due_date: string;
+    due_date: dayjs.Dayjs;
 
     constructor(Task: Task) {
         this.id = Task.id;
@@ -13,5 +14,4 @@ export default class TaskDTO {
         this.completed = Task.completed;
         this.due_date = Task.due_date;
     }
-
 }

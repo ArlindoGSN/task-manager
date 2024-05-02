@@ -27,14 +27,14 @@ export default class TaskService {
         try {
             const db: Database = await getConnection();
 
-            const tasks = await db.all('SELECT * FROM tasks');
-
+            const tasks = await db.all('SELECT * FROM tasks WHERE completed = 0');
             return tasks.map((task: Task) => new TaskDTO(task));
         } catch (error) {
-            console.error('An error occurred while retrieving task by id:', error);
+            console.error('An error occurred while retrieving tasks:', error);
             throw error;
         }
     }
+
     public static async getById(id: number): Promise<TaskDTO> {
         try {
             const db: Database = await getConnection();
@@ -82,6 +82,7 @@ export default class TaskService {
             throw error;
         }
     }
+
     public static async completeTaskById(id: number): Promise<void> {
         try {
             const db: Database = await getConnection();
